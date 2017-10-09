@@ -1,0 +1,33 @@
+{
+  "name": "neu-mdp-rate",
+  "version": "1.2.6",
+  "description": "a grading components",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "ngc": "ngc",
+    "build": "rd /s /q dist aot && npm run ngc",
+    "publishPackage": "npm run build && npm publish",
+    "copy:scss": "xcopy src\\components\\mdp-rate.scss dist\\components",
+    "postbuild": "npm run copy:scss"
+  },
+  "keywords": ["rate"],
+  "author": "neuHmichael",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/common": "4.1.3",
+    "@angular/compiler": "4.1.3",
+    "@angular/compiler-cli": "4.1.3",
+    "@angular/core": "4.1.3",
+    "@angular/forms": "4.1.3",
+    "@angular/http": "4.1.3",
+    "@angular/platform-browser": "4.1.3",
+    "@angular/platform-browser-dynamic": "4.1.3",
+    "ionic-angular": "3.6.0",
+    "ionic": "3.9.2",
+    "ionicons": "3.0.0",
+    "rxjs": "5.4.0",
+    "typescript": "2.3.4",
+    "zone.js": "0.8.12"
+  }
+}

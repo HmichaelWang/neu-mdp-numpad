@@ -1,0 +1,63 @@
+mdp-numpad {
+  
+.backdrop{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60%;
+    opacity: 0;
+}
+.con{
+    padding: 16px;
+    position: absolute;
+    bottom: 0;
+    background-color: #EEEEEE;
+    width:100%;
+    height: 40%;
+  }
+.keyboard{
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-size: x-large;
+    box-shadow: 2px 2px 2px 1px #DADADA ;
+  }
+  .keyboard:active {   
+    -webkit-transform: scale(0.95);                     
+    background-color: #F5F5F5;
+  }
+  .num{
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .ensure{
+    font-size: large;
+  }
+
+  .num-pad-al {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  .md-show.num-pad-al {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .md-hide.num-pad-al {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+}
+

@@ -1,0 +1,66 @@
+<!-- Generated template for the MdpNumpadComponent component -->
+<div [ngClass]="{'con num-pad-al':true,'md-show':showDom,'md-hide':hideDom}" [id]="padValue">
+  <ion-grid class="border-grid">
+    <ion-row>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('1')">1</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('2')">2</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('3')">3</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num ensure" (click)="padBack()">退格</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('4')">4</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('5')">5</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('6')">6</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padAdd()">+</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('7')">7</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('8')">8</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('9')">9</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padSub()">-</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-3>
+        <div class="keyboard num ensure" (click)="padClear()">清空</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('0')">0</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num" (click)="padClick('.')">.</div>
+      </ion-col>
+      <ion-col col-3>
+        <div class="keyboard num ensure" (click)="padEnsure()">{{isDoneText}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>
+<div class="backdrop" (click)="closePad()"></div>
