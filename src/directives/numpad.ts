@@ -1,5 +1,5 @@
 import { Directive, Renderer2, ElementRef, ViewContainerRef, ComponentFactoryResolver, HostListener, Input } from '@angular/core';
-import { MdpNumpadComponent } from '../../components/mdp-numpad'
+import { MdpNumpadComponent } from '../components/mdp-numpad'
 
 /**
  * Generated class for the NumpadDirective directive.自定义数字键盘

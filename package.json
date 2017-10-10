@@ -1,17 +1,17 @@
 {
-  "name": "neu-mdp-rate",
-  "version": "1.2.6",
-  "description": "a grading components",
+  "name": "neu-mdp-numpad",
+  "version": "1.0.0",
+  "description": "",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
     "ngc": "ngc",
     "build": "rd /s /q dist aot && npm run ngc",
     "publishPackage": "npm run build && npm publish",
-    "copy:scss": "xcopy src\\components\\mdp-rate.scss dist\\components",
+    "copy:scss": "xcopy src\\components\\mdp-numpad.scss dist\\components",
     "postbuild": "npm run copy:scss"
   },
-  "keywords": ["rate"],
+  "keywords": ["ionic2","numpad"],
   "author": "neuHmichael",
   "license": "ISC",
   "devDependencies": {

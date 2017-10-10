@@ -1,1 +1,3 @@
-export * from './components/mdp-rate.module';
+export * from './directives/numpad.module';
+
+
