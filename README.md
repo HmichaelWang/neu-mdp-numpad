@@ -9,6 +9,8 @@
   键盘输入的值会在input标签的value属性中；
   默认只有input获得焦点时才唤起，通过添加isInit属性可以让页面加载时就初始化并唤起键盘
 
+  完成按钮的主题颜色可通过修改ionic2默认主题色“primary”的颜色样式来修改;
+
   通过 `npm install neu-mdp-numpad` 下载至本地并开始使用
   
 
