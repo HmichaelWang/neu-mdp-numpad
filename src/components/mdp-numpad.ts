@@ -7,8 +7,8 @@ import { Component, EventEmitter } from '@angular/core';
   selector: 'mdp-numpad',
   template: `
   <div [ngClass]="{'con num-pad-al':true,'md-show':showDom,'md-hide':hideDom}" [id]="padValue">
-  <ion-grid class="border-grid">
-    <ion-row>
+  <ion-grid class="border-grid" style="height:100%">
+    <ion-row style="height:25%">
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('1')">1</div>
       </ion-col>
@@ -19,11 +19,13 @@ import { Component, EventEmitter } from '@angular/core';
         <div class="keyboard num" (click)="padClick('3')">3</div>
       </ion-col>
       <ion-col col-3>
-        <div class="keyboard num ensure" (click)="padBack()">退格</div>
+        <div class="keyboard num ensure" (click)="padBack()">
+          <ion-icon name="backspace"></ion-icon>
+        </div>
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row style="height:25%">
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('4')">4</div>
       </ion-col>
@@ -38,7 +40,7 @@ import { Component, EventEmitter } from '@angular/core';
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row style="height:25%">
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('7')">7</div>
       </ion-col>
@@ -53,9 +55,9 @@ import { Component, EventEmitter } from '@angular/core';
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row style="height:25%">
       <ion-col col-3>
-        <div class="keyboard num ensure" (click)="padClear()">清空</div>
+        <div class="keyboard num ensure" (click)="padClear()">C</div>
       </ion-col>
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('0')">0</div>
@@ -64,7 +66,7 @@ import { Component, EventEmitter } from '@angular/core';
         <div class="keyboard num" (click)="padClick('.')">.</div>
       </ion-col>
       <ion-col col-3>
-        <div class="keyboard num ensure" (click)="padEnsure()">{{isDoneText}}</div>
+          <button class="done" ion-button small mode="ios" (click)="padEnsure()">{{isDoneText}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>

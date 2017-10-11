@@ -13,7 +13,7 @@
   
 
 ## 在你的模块中使用
-   .module文件
+ .module文件
  ```typescript
   import { DirectivesModule } from 'neu-mdp-numpad';
 
@@ -31,7 +31,7 @@
 
 ```
 
-
+.HTML文件
 ```html
   <input numpad isInit type="text">
 ```
