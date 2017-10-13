@@ -3,6 +3,7 @@ mdp-numpad {
   .backdrop{
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       height: 64%;
       opacity: 0;
@@ -12,6 +13,7 @@ mdp-numpad {
       padding: 0;
       position: fixed;
       bottom: 0;
+      left: 0;
       background-color: #EEEEEE;
       width:100%;
       height: 36%;

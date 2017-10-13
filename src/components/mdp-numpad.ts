@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } from '@angular/core';
 
 /**
  * Generated class for the MdpNumpadComponent component.数字键盘组件
@@ -7,7 +7,7 @@ import { Component, EventEmitter } from '@angular/core';
   selector: 'mdp-numpad',
   template: `
   <div [ngClass]="{'con num-pad-al':true,'md-show':showDom,'md-hide':hideDom}" [id]="padValue">
-  <ion-grid class="border-grid" style="height:100%">
+  <ion-grid #grid class="border-grid" style="height:100%">
     <ion-row style="height:25%">
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('1')">1</div>
@@ -74,7 +74,8 @@ import { Component, EventEmitter } from '@angular/core';
 </div>
 <div class="backdrop" (click)="closePad()"></div>`
 })
-export class MdpNumpadComponent {
+export class MdpNumpadComponent implements OnInit{
+  @ViewChild('grid') gridBox: ElementRef;
   isDoneText: string = "完成"
   isDone: boolean = true;
   isDo: boolean = false;
@@ -83,10 +84,22 @@ export class MdpNumpadComponent {
   showDom: boolean = false;
   hideDom: boolean = false;
 
-  constructor() {
+  constructor(private renderer:Renderer2) {
     setTimeout(()=>{
       this.showDom = true;
     },10)
+  }
+
+  //设置单行高度
+  ngOnInit(){
+    let rowBox: ElementRef;
+    setTimeout(()=>{
+      let rowH = (this.gridBox.nativeElement.clientHeight / 4) + 'px';
+      for(rowBox of this.gridBox.nativeElement.children){
+        this.renderer.setStyle(rowBox,'height',rowH)
+      }
+    },30)
+
   }
 
   /**
