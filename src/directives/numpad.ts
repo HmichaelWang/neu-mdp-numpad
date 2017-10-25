@@ -1,5 +1,6 @@
 import { Directive, Renderer2, ElementRef, ViewContainerRef, ComponentFactoryResolver, HostListener, Input } from '@angular/core';
-import { MdpNumpadComponent } from '../components/mdp-numpad'
+import { MdpNumpadComponent } from '../components/mdp-numpad';
+import { Content } from 'ionic-angular';
 
 /**
  * Generated class for the NumpadDirective directive.自定义数字键盘
@@ -11,10 +12,19 @@ export class NumpadDirective {
   isShow: boolean = false;
   @Input() isInit: any = false;
   @Input() position: ViewContainerRef;
+  @Input() content: Content;
+  _vHeight: number = document.body.clientHeight;
+  _topHeight: number = this._vHeight * 0.64;
   @HostListener("click", ["$event"])
   onClick(e) {
-    this.el.nativeElement.localName==="ion-input" ? this.el.nativeElement.children[0].blur() :
-    this.el.nativeElement.blur();
+    this.el.nativeElement.localName === "ion-input" ? this.el.nativeElement.children[0].blur() :
+      this.el.nativeElement.blur();
+
+    //若当前输入框位置低于键盘  则向上滚动至键盘上方
+    if (e.clientY + this.el.nativeElement.clientHeight > this._topHeight) {
+      this.content.scrollTo(0, this.content.getContentDimensions().scrollTop + e.clientY + this.el.nativeElement.clientHeight - this._topHeight, 300);
+    }
+
     !this.isShow && this.showNumPad();
   }
 
@@ -26,7 +36,7 @@ export class NumpadDirective {
     // setTimeout(()=>{
     //   this.el.nativeElement.focus();
     // },100)
-    if(this.isInit===true || this.isInit ==="true" || this.isInit===""){
+    if (this.isInit === true || this.isInit === "true" || this.isInit === "") {
       this.showNumPad()
     }
   }

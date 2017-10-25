@@ -66,7 +66,7 @@ import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } fro
         <div class="keyboard num" (click)="padClick('.')">.</div>
       </ion-col>
       <ion-col col-3>
-          <button class="done" ion-button small mode="ios" (click)="padEnsure()">{{isDoneText}}</button>
+          <button class="done" style="height:100%;font-size:larger" ion-button small mode="ios" (click)="padEnsure()">{{isDoneText}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>
