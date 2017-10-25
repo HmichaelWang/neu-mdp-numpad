@@ -10,8 +10,10 @@ import { MdpNumpadComponent } from '../components/mdp-numpad'
 export class NumpadDirective {
   isShow: boolean = false;
   @Input() isInit: any = false;
+  @Input() position: ViewContainerRef;
   @HostListener("click", ["$event"])
   onClick(e) {
+    this.el.nativeElement.localName==="ion-input" ? this.el.nativeElement.children[0].blur() :
     this.el.nativeElement.blur();
     !this.isShow && this.showNumPad();
   }
@@ -36,11 +38,11 @@ export class NumpadDirective {
     this.isShow = true;
     //加载虚拟键盘
     let comFac = this.cfr.resolveComponentFactory(MdpNumpadComponent);
-    let newCom = this.view.createComponent(comFac);
+    let newCom = this.position.createComponent(comFac);
     newCom.changeDetectorRef.detectChanges();
 
     //获取虚拟键盘dom
-    let mdpNum = this.el.nativeElement.nextElementSibling;
+    let mdpNum = this.position.element.nativeElement.nextElementSibling;
 
     //获取虚拟键盘设置的值
     this.numPadel.nativeElement = mdpNum;
@@ -50,7 +52,7 @@ export class NumpadDirective {
     this.render.listen(mdpNum, 'click', ($event) => {
       if ($event.toElement.className === "backdrop" || finalDv.id === "getDone") {
         setTimeout(() => {
-          this.view.clear();
+          this.position.clear();
         }, 300);
         this.isShow = false;
       } else {

@@ -8,7 +8,7 @@ import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } fro
   template: `
   <div [ngClass]="{'con num-pad-al':true,'md-show':showDom,'md-hide':hideDom}" [id]="padValue">
   <ion-grid #grid class="border-grid" style="height:100%">
-    <ion-row style="height:25%">
+    <ion-row>
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('1')">1</div>
       </ion-col>
@@ -25,7 +25,7 @@ import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } fro
       </ion-col>
     </ion-row>
 
-    <ion-row style="height:25%">
+    <ion-row>
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('4')">4</div>
       </ion-col>
@@ -40,7 +40,7 @@ import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } fro
       </ion-col>
     </ion-row>
 
-    <ion-row style="height:25%">
+    <ion-row>
       <ion-col col-3>
         <div class="keyboard num" (click)="padClick('7')">7</div>
       </ion-col>
@@ -55,7 +55,7 @@ import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } fro
       </ion-col>
     </ion-row>
 
-    <ion-row style="height:25%">
+    <ion-row>
       <ion-col col-3>
         <div class="keyboard num ensure" (click)="padClear()">C</div>
       </ion-col>
@@ -92,11 +92,17 @@ export class MdpNumpadComponent implements OnInit{
 
   //设置单行高度
   ngOnInit(){
+    let i = 0;
     let rowBox: ElementRef;
+    let colBox: ElementRef;
     setTimeout(()=>{
-      let rowH = (this.gridBox.nativeElement.clientHeight / 4) + 'px';
+      let rowH = ((this.gridBox.nativeElement.clientHeight- 10) / 4) + 'px';
       for(rowBox of this.gridBox.nativeElement.children){
         this.renderer.setStyle(rowBox,'height',rowH)
+        for(colBox of this.gridBox.nativeElement.children[i].children){
+          this.renderer.setStyle(colBox,'height','100%')
+        }
+        i++;
       }
     },30)
 
