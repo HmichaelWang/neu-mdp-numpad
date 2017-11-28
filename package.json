@@ -1,6 +1,6 @@
 {
   "name": "neu-mdp-numpad",
-  "version": "1.3.7",
+  "version": "2.1.1",
   "description": "",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

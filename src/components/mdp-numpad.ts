@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } from '@angular/core';
 
 /**
- * Generated class for the MdpNumpadComponent component.数字键盘组件
+ * Generated class for the MdpNumpadComponent component.数字键盘组件 计算
  */
 @Component({
   selector: 'mdp-numpad',
