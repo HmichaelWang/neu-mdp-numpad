@@ -74,8 +74,9 @@ import { Component, EventEmitter, Renderer2, ElementRef, ViewChild, OnInit } fro
 </div>
 <div class="backdrop" (click)="closePad()"></div>`
 })
-export class MdpNumpadComponent implements OnInit{
+export class MdpNumpadComponent implements OnInit {
   @ViewChild('grid') gridBox: ElementRef;
+  @ViewChild('row') rowBox: ElementRef;
   isDoneText: string = "完成"
   isDone: boolean = true;
   isDo: boolean = false;
@@ -84,27 +85,27 @@ export class MdpNumpadComponent implements OnInit{
   showDom: boolean = false;
   hideDom: boolean = false;
 
-  constructor(private renderer:Renderer2) {
-    setTimeout(()=>{
+  constructor(private renderer: Renderer2) {
+    setTimeout(() => {
       this.showDom = true;
-    },10)
+    }, 10)
   }
 
   //设置单行高度
-  ngOnInit(){
+  ngOnInit() {
     let i = 0;
     let rowBox: ElementRef;
     let colBox: ElementRef;
-    setTimeout(()=>{
-      let rowH = ((this.gridBox.nativeElement.clientHeight- 10) / 4) + 'px';
-      for(rowBox of this.gridBox.nativeElement.children){
-        this.renderer.setStyle(rowBox,'height',rowH)
-        for(colBox of this.gridBox.nativeElement.children[i].children){
-          this.renderer.setStyle(colBox,'height','100%')
+    setTimeout(() => {
+      let rowH = ((this.gridBox.nativeElement.clientHeight - 10) / 4) + 'px';
+      for (rowBox of this.gridBox.nativeElement.children) {
+        this.renderer.setStyle(rowBox, 'height', rowH)
+        for (colBox of this.gridBox.nativeElement.children[i].children) {
+          this.renderer.setStyle(colBox, 'height', '100%')
         }
         i++;
       }
-    },30)
+    }, 30)
 
   }
 
@@ -113,7 +114,7 @@ export class MdpNumpadComponent implements OnInit{
    * @param value 点击的数字
    */
   padClick(value) {
-    this.numList[2] = "ys";
+    let boxH = this.gridBox.nativeElement.clientHeight;
     if (this.isDo) {
       this.padValue = value;
       this.isDo = false;
@@ -128,7 +129,6 @@ export class MdpNumpadComponent implements OnInit{
   padBack() {
     this.padValue += "";
     this.padValue = this.padValue.substring(0, this.padValue.length - 1);
-    this.padValue === "" ? this.padValue = "0" : false;
   }
 
   /**
@@ -148,31 +148,33 @@ export class MdpNumpadComponent implements OnInit{
     this.isDoneText = "=";
     this.numList[2] === "ys" && this.padEnsure(true);
     this.numList[0] = parseFloat(this.padValue) || 0;
+    this.numList[2] = "ys";
     this.isDo = true;
     this.numList[1] = true;
   }
 
-   /**
-   * 减法
-   */
+  /**
+  * 减法
+  */
   padSub() {
     this.isDone = false;
     this.isDoneText = "=";
     this.numList[2] === "ys" && this.padEnsure(true);
     this.numList[0] = parseFloat(this.padValue) || 0;
+    this.numList[2] = "ys";
     this.isDo = true;
     this.numList[1] = false;
   }
 
-   /**
-   * 完成及等于
-   */
+  /**
+  * 完成及等于
+  */
   padEnsure(isYs) {
-    if(this.isDone){
+    if (this.isDone) {
       this.padValue = "getDone";
       this.showDom = false;
       this.hideDom = true;
-    }else{
+    } else {
       isYs ? false : this.isDone = true;
       isYs ? false : this.isDoneText = "完成";
       this.isDo = true;
@@ -186,10 +188,10 @@ export class MdpNumpadComponent implements OnInit{
     }
   }
 
-   /**
-   * 关闭弹窗
-   */
-  closePad(){
+  /**
+  * 关闭弹窗
+  */
+  closePad() {
     this.showDom = false;
     this.hideDom = true;
   }

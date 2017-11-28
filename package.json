@@ -1,14 +1,14 @@
 {
   "name": "neu-mdp-numpad",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
     "ngc": "ngc",
-    "build": "rd /s /q dist aot && npm run ngc",
+    "build": "rm -rf dist aot && npm run ngc",
     "publishPackage": "npm run build && npm publish",
-    "copy:scss": "xcopy src\\components\\mdp-numpad.scss dist\\components",
+    "copy:scss": "cp -r src/components/mdp-numpad.scss src/components/mdp-numpad-pure.scss dist/components",
     "postbuild": "npm run copy:scss"
   },
   "keywords": ["ionic2","numpad"],
