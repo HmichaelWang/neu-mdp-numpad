@@ -86,7 +86,7 @@ import { Component, EventEmitter, ElementRef, ViewChild, OnInit, Renderer2 } fro
         </ion-row>
     </ion-grid>
 </div>
-<div tappable class="backdrop" (click)="closePad()"></div>`
+<div tappable class="backdrop" (click)="padEnsure()"></div>`
 })
 export class MdpNumpadPureComponent implements OnInit {
     @ViewChild('grid') gridBox: ElementRef;
@@ -146,14 +146,6 @@ export class MdpNumpadPureComponent implements OnInit {
     */
     padEnsure(isYs) {
         this.padValue = "getDone";
-        this.showDom = false;
-        this.hideDom = true;
-    }
-
-    /**
-    * 关闭弹窗
-    */
-    closePad() {
         this.showDom = false;
         this.hideDom = true;
     }

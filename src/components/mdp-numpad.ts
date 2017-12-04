@@ -192,6 +192,7 @@ export class MdpNumpadComponent implements OnInit {
   * 关闭弹窗
   */
   closePad() {
+    this.padValue = "getDone";
     this.showDom = false;
     this.hideDom = true;
   }
