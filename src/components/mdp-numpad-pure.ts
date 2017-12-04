@@ -12,41 +12,41 @@ import { Component, EventEmitter, ElementRef, ViewChild, OnInit, Renderer2 } fro
             <ion-col col-3>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('1')">1</div>
+                        <div tappable class="keyboard num" (click)="padClick('1')">1</div>
                     </ion-col>
                 </ion-row>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('4')">4</div>
+                        <div tappable class="keyboard num" (click)="padClick('4')">4</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-3>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('2')">2</div>
+                        <div tappable class="keyboard num" (click)="padClick('2')">2</div>
                     </ion-col>
                 </ion-row>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('5')">5</div>
+                        <div tappable class="keyboard num" (click)="padClick('5')">5</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-3>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('3')">3</div>
+                        <div tappable class="keyboard num" (click)="padClick('3')">3</div>
                     </ion-col>
                 </ion-row>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('6')">6</div>
+                        <div tappable class="keyboard num" (click)="padClick('6')">6</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-3>
-                <div class="keyboard num ensure" (click)="padBack()">
+                <div tappable class="keyboard num ensure" (click)="padBack()">
                     <ion-icon name="backspace"></ion-icon>
                 </div>
             </ion-col>
@@ -56,37 +56,37 @@ import { Component, EventEmitter, ElementRef, ViewChild, OnInit, Renderer2 } fro
             <ion-col col-3>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('7')">7</div>
+                        <div tappable class="keyboard num" (click)="padClick('7')">7</div>
                     </ion-col>
                 </ion-row>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('.')">.</div>
+                        <div tappable class="keyboard num" (click)="padClick('.')">.</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-6>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('8')">8</div>
+                        <div tappable class="keyboard num" (click)="padClick('8')">8</div>
                     </ion-col>
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('9')">9</div>
+                        <div tappable class="keyboard num" (click)="padClick('9')">9</div>
                     </ion-col>
                 </ion-row>
                 <ion-row class="H-5">
                     <ion-col>
-                        <div class="keyboard num" (click)="padClick('0')">0</div>
+                        <div tappable class="keyboard num" (click)="padClick('0')">0</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-3>
-                <button class="done" style="height:100%;font-size:larger" ion-button small mode="ios" (click)="padEnsure()">确定</button>
+                <button tappable class="done" style="height:100%;font-size:larger" ion-button small mode="ios" (click)="padEnsure()">确定</button>
             </ion-col>
         </ion-row>
     </ion-grid>
 </div>
-<div class="backdrop" (click)="closePad()"></div>`
+<div tappable class="backdrop" (click)="closePad()"></div>`
 })
 export class MdpNumpadPureComponent implements OnInit {
     @ViewChild('grid') gridBox: ElementRef;
@@ -109,10 +109,8 @@ export class MdpNumpadPureComponent implements OnInit {
             let rowH = ((this.gridBox.nativeElement.clientHeight - 10) / 2) + 'px';
             for (rowBox of this.gridBox.nativeElement.children) {
                 this.renderer.setStyle(rowBox, 'height', rowH)
-                console.log(this.gridBox.nativeElement.children[i].children.length)
                 let rH = this.gridBox.nativeElement.children[i].children.length;
                 for (let j = 0; j < rH; j++) {
-                    console.log(this.gridBox.nativeElement.children[i].children[j])
                     this.renderer.setStyle(this.gridBox.nativeElement.children[i].children[j], 'height', '100%');
                     (j != rH - 1) && this.renderer.setStyle(this.gridBox.nativeElement.children[i].children[j], 'padding', '0');
                 }
