@@ -10,36 +10,36 @@ import { Component, EventEmitter, ElementRef, ViewChild, OnInit, Renderer2 } fro
     <ion-grid #grid class="border-grid" style="height:100%">
         <ion-row>
             <ion-col col-3>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('1')">1</div>
                     </ion-col>
                 </ion-row>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('4')">4</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-3>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('2')">2</div>
                     </ion-col>
                 </ion-row>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('5')">5</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-3>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('3')">3</div>
                     </ion-col>
                 </ion-row>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('6')">6</div>
                     </ion-col>
@@ -54,19 +54,19 @@ import { Component, EventEmitter, ElementRef, ViewChild, OnInit, Renderer2 } fro
 
         <ion-row>
             <ion-col col-3>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('7')">7</div>
                     </ion-col>
                 </ion-row>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('.')">.</div>
                     </ion-col>
                 </ion-row>
             </ion-col>
             <ion-col col-6>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('8')">8</div>
                     </ion-col>
@@ -74,7 +74,7 @@ import { Component, EventEmitter, ElementRef, ViewChild, OnInit, Renderer2 } fro
                         <div tappable class="keyboard num" (click)="padClick('9')">9</div>
                     </ion-col>
                 </ion-row>
-                <ion-row class="H-5">
+                <ion-row>
                     <ion-col>
                         <div tappable class="keyboard num" (click)="padClick('0')">0</div>
                     </ion-col>
@@ -113,16 +113,20 @@ export class MdpNumpadPureComponent implements OnInit {
                 for (let j = 0; j < rH; j++) {
                     this.renderer.setStyle(this.gridBox.nativeElement.children[i].children[j], 'height', '100%');
                     (j != rH - 1) && this.renderer.setStyle(this.gridBox.nativeElement.children[i].children[j], 'padding', '0');
+                    (this.gridBox.nativeElement.children[i].children[j].children.length>1) && this.setChildRowH(this.gridBox.nativeElement.children[i].children[j]);
                 }
-
-                // for(colBox of this.gridBox.nativeElement.children[i].children){
-                //   this.renderer.setStyle(colBox,'height','100%');
-                //   this.renderer.setStyle(colBox,'padding','0');
-                // }
                 i++;
             }
         }, 30)
 
+    }
+
+    setChildRowH(rowEl){
+        let rowBox: ElementRef;
+        let rowBoxH = (rowEl.clientHeight / 2) + 'px';
+        for(rowBox of rowEl.children){
+            this.renderer.setStyle(rowBox, 'height', rowBoxH);
+        }
     }
 
     /**
